@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+	--color-green-50: #f5f5ea;
+	--color-green-100: #e8e8cc;
+	--color-green-200: #d7d79f;
+	--color-green-600: #8b8b48;
+	--color-green-700: #406060;
+	--color-green-800: #2f4b4b;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	background: #fff;
+	color: #304848;
+}
+
+::selection {
+	background: #406060;
+	color: white;
+}
+
+@keyframes fadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.animate-fade-up {
+	animation: fadeUp 0.8s ease-out;
+}

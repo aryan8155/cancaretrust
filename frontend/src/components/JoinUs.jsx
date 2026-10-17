@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { apiRequest } from '../services/api'
 
 const initialForm = {
   fullName: '',
@@ -14,12 +15,15 @@ function JoinUs() {
   const [form, setForm] = useState(initialForm)
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [apiError, setApiError] = useState('')
+  const [submitting, setSubmitting] = useState(false)
 
   function updateField(event) {
     const { name, value } = event.target
     setForm((current) => ({ ...current, [name]: value }))
     setErrors((current) => ({ ...current, [name]: '' }))
     setSubmitted(false)
+    setApiError('')
   }
 
   function validate() {
@@ -38,7 +42,7 @@ function JoinUs() {
     return nextErrors
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
     const nextErrors = validate()
 
@@ -49,8 +53,22 @@ function JoinUs() {
     }
 
     setErrors({})
-    setSubmitted(true)
-    setForm(initialForm)
+    setApiError('')
+    setSubmitting(true)
+
+    try {
+      await apiRequest('/api/applications', {
+        method: 'POST',
+        body: JSON.stringify(form),
+      })
+      setSubmitted(true)
+      setForm(initialForm)
+    } catch {
+      setApiError('We could not send your application right now. Please try again or contact us directly.')
+      setSubmitted(false)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -119,9 +137,11 @@ function JoinUs() {
             </div>
           </div>
 
-          <button type="submit" className="mt-6 w-full rounded-xl bg-green-700 px-6 py-3.5 font-semibold text-white transition hover:bg-green-800">
-            Join Can Care Trust
+          <button type="submit" disabled={submitting} className="mt-6 w-full rounded-xl bg-green-700 px-6 py-3.5 font-semibold text-white transition hover:bg-green-800 disabled:cursor-wait disabled:opacity-60">
+            {submitting ? 'Sending...' : 'Join Can Care Trust'}
           </button>
+
+          {apiError && <p role="alert" className="mt-4 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">{apiError}</p>}
 
           {submitted && (
             <div role="status" className="mt-5 rounded-xl border border-green-200 bg-green-50 p-4 text-green-800">

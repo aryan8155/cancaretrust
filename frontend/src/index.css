@@ -11,13 +11,45 @@
 
 html {
 	scroll-behavior: smooth;
+	max-width: 100%;
+	overflow-x: hidden;
 }
 
 body {
 	margin: 0;
-	font-family: Arial, Helvetica, sans-serif;
-	background: #fff;
+	font-family: "Trebuchet MS", sans-serif;
+	background: #fbfcf8;
 	color: #304848;
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+.font-display {
+	font-family: Georgia, "Times New Roman", serif;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+	font: inherit;
+	min-height: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+	}
 }
 
 ::selection {
@@ -39,4 +71,15 @@ body {
 
 .animate-fade-up {
 	animation: fadeUp 0.8s ease-out;
+}
+
+.reveal {
+	opacity: 0;
+	transform: translateY(22px);
+	transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-visible {
+	opacity: 1;
+	transform: translateY(0);
 }

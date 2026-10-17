@@ -17,7 +17,7 @@ function Contact() {
               <div>
                 <p className="text-sm text-gray-500">Email</p>
                 <a href="mailto:cancaretrust.delhi@gmail.com" className="font-semibold text-green-700">
-                  cancaretrust.delhi@gmail.com
+                    <span className="break-all">cancaretrust.delhi@gmail.com</span>
                 </a>
               </div>
               <div>

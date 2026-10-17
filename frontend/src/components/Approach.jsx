@@ -2,7 +2,7 @@ import approachImage from '../assets/bg.png'
 
 function Approach() {
   return (
-    <section className="bg-[#f3eee4] py-20">
+    <section className="bg-[#fbfcf8] py-24">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 md:grid-cols-2">
         <div className="overflow-hidden rounded-3xl bg-[#e9dfcc] shadow-sm">
           <img
@@ -13,10 +13,8 @@ function Approach() {
         </div>
 
         <div>
-          <p className="font-semibold uppercase tracking-wide text-green-600">Our Approach</p>
-          <h2 className="mt-3 text-4xl font-bold text-gray-900">
-            People at the heart of everything we do
-          </h2>
+          <p className="font-semibold uppercase tracking-[0.18em] text-[#a36f18]">Our approach</p>
+          <h2 className="font-display mt-3 text-4xl font-bold text-[#173d36]">Listen first. Act with care.</h2>
           <p className="mt-6 text-lg leading-relaxed text-gray-600">
             Can Care Trust believes in grassroots action, community participation, and
             long-term solutions.
@@ -26,19 +24,13 @@ function Approach() {
             implement practical, people-centric initiatives that bring real change.
           </p>
 
-          <div className="mt-8 grid grid-cols-3 gap-4">
-            <div>
-              <h3 className="text-2xl font-bold text-green-600">Local</h3>
-              <p className="mt-1 text-gray-500">Grassroots Action</p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-green-600">People</h3>
-              <p className="mt-1 text-gray-500">Community Focus</p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-green-600">Long-term</h3>
-              <p className="mt-1 text-gray-500">Sustainable Solutions</p>
-            </div>
+          <div className="mt-9 grid gap-4 sm:grid-cols-2">
+            {['Understand', 'Connect', 'Act', 'Create long-term impact'].map((step, index) => (
+              <div key={step} className="flex items-center gap-4 border-t border-[#dce5dc] pt-4">
+                <span className="font-display text-2xl font-bold text-[#d49b35]">0{index + 1}</span>
+                <span className="font-semibold text-[#173d36]">{step}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

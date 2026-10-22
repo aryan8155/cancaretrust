@@ -4,6 +4,14 @@ import defencePhoto3 from '../assets/defence3.jpeg'
 import health1 from '../assets/health1.jpeg'
 import health2 from '../assets/health2.jpeg'
 import health3 from '../assets/health3.jpeg'
+import work1 from '../assets/work1.jpeg'
+import work2 from '../assets/work2.jpeg'
+import work3 from '../assets/work3.jpeg'
+import work4 from '../assets/work4.jpeg'
+import work5 from '../assets/work5.jpeg'
+import work6 from '../assets/work6.jpeg'
+import work7 from '../assets/work7.jpeg'
+import work8 from '../assets/work8.jpeg'
 
 function Services() {
   const areas = [
@@ -35,6 +43,17 @@ function Services() {
       description:
         'Working towards a cleaner and greener environment through awareness programs, plantation drives, and sustainable practices.',
     },
+  ]
+
+  const communityMoments = [
+    { photo: work1, caption: 'Community learning session' },
+    { photo: work2, caption: 'Care and wellbeing support' },
+    { photo: work3, caption: 'Community celebration' },
+    { photo: work4, caption: 'Women empowerment workshop' },
+    { photo: work5, caption: 'Practical support in action' },
+    { photo: work6, caption: 'Cultural participation' },
+    { photo: work7, caption: 'Celebrating together' },
+    { photo: work8, caption: 'Building community connections' },
   ]
 
   return (
@@ -102,6 +121,32 @@ function Services() {
                 <figure key={photo} className="group overflow-hidden rounded-2xl border border-[#dce5dc] bg-white shadow-sm">
                   <img src={photo} alt={`Can Care Trust self-defence training session ${index + 1}`} loading="lazy" className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" />
                   <figcaption className="px-5 py-4 text-sm font-semibold text-[#173d36]">Self-defence training · Delhi Police partnership</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-16">
+            <p className="font-semibold uppercase tracking-[0.16em] text-[#a36f18]">Community moments</p>
+            <h3 className="font-display mt-2 text-3xl font-bold text-[#173d36]">Small moments, shared with care</h3>
+            <p className="mt-3 max-w-2xl leading-relaxed text-gray-600">
+              From learning spaces to celebrations, every gathering helps build stronger and more connected communities.
+            </p>
+            <div className="mt-7 grid auto-rows-[11rem] gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {communityMoments.map(({ photo, caption }, index) => (
+                <figure
+                  key={photo}
+                  className={`group relative overflow-hidden rounded-2xl border border-[#dce5dc] bg-white shadow-sm ${index === 0 ? 'sm:row-span-2 lg:col-span-2' : ''}`}
+                >
+                  <img
+                    src={photo}
+                    alt={`Can Care Trust ${caption.toLowerCase()}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#173d36]/90 via-[#173d36]/45 to-transparent px-4 pb-4 pt-10 text-sm font-semibold text-white">
+                    {caption}
+                  </figcaption>
                 </figure>
               ))}
             </div>
